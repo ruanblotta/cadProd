@@ -6,6 +6,7 @@ namespace cadProd.Entities
         public string Name { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
+        private static List<Product> products { get; set; } = new List<Product>();
 
         public Product()
         {
@@ -18,35 +19,41 @@ namespace cadProd.Entities
             Price = price;
             Quantity = quantity;
         }
-
-        public void AddProduct(int quantity)
+        
+        public void AddProduct(Product product)
         {
-            Quantity += quantity;
+            products.Add(product);
         }
 
-        public void RemoveProuct(int quantity)
+      
+        public static List<Product> ListProduct()
         {
-            Quantity -= quantity;
-        }
-        public void ListProduct()
-        {
-
+            return products;
         }
 
-        public void SearchProduct()
+        public static Product SearchProductById(int id)
         {
-
+            return products.FirstOrDefault(p => p.Id == id);
         }
 
+        public static bool RemoveProduct(int id)
+        {
+            var product = SearchProductById(id);
+            if (product != null)
+            {
+                products.Remove(product);
+                return true;
+            }
+            return false;
+        }
         public override string ToString()
         {
-            return "ID: "
-                + Id
-                + " NOME: "
+            return $"ID:({Id})"
+                + "- NOME: "
                 + Name
-                + " Valor: "
+                + "- Valor unidade: "
                 + Price
-                + ". "
+                + " - "
                 + Quantity
                 + " unidades em estoque.";
         }
