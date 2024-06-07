@@ -45,6 +45,34 @@ namespace cadProd
                             Console.WriteLine(p);
                         }
                         break;
+                    case 3:
+                        Console.Write("Digite o código de Id do produto: ");
+                        int searchId = int.Parse(Console.ReadLine());
+                        Product f = Product.SearchProductById(searchId);
+                        if (f != null)
+                        {
+                            Console.Write(f);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Produto não encontrado");
+                        }
+                        break;
+                    case 4:
+                        Console.Write("Digite o código de Id do produto: ");
+                        searchId = int.Parse(Console.ReadLine());
+                        if (Product.RemoveProduct(searchId))
+                        {
+                            Console.WriteLine("Produto removido do estoque.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Produto não encontrado");
+                        }
+                        break;
+                    case 5:
+                        exit = true;
+                        break;
                     default:
                         Console.WriteLine("Opção Inválida. Digite uma opção válida.");
                         break;
