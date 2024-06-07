@@ -39,21 +39,16 @@ namespace cadProd.Entities
         public static bool RemoveProduct(int id)
         {
             var product = SearchProductById(id);
-            if (product != null)
-            {
-                products.Remove(product);
-                return true;
-            }
-            return false;
+            return product != null ? products.Remove(product) : false;
         }
         public override string ToString()
         {
             return $"ID:({Id})"
-                + "- NOME: "
+                + " -- NOME: "
                 + Name
-                + "- Valor unidade: "
+                + " -- Valor unidade R$: "
                 + Price
-                + " - "
+                + " -- "
                 + Quantity
                 + " unidades em estoque.";
         }

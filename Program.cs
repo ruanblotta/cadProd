@@ -11,7 +11,8 @@ namespace cadProd
 
             bool exit = false;
             while (!exit)
-            {
+            {   
+                Console.WriteLine();
                 Console.WriteLine("Escolha uma opção: ");
                 Console.WriteLine("1. Adicionar produtos ao estoque.");
                 Console.WriteLine("2. Listar todos os produtos do estoque.");
@@ -31,7 +32,7 @@ namespace cadProd
                             int id = int.Parse(Console.ReadLine());
                             Console.Write("Digite o Nome do Produto: ");
                             string name = Console.ReadLine();
-                            Console.Write("Digite o Preço do Produto: ");
+                            Console.Write("Digite o Preço unitário: ");
                             double price = double.Parse(Console.ReadLine());
                             Console.Write("Digite a Quantidade que iremos adicionar: ");
                             int quantity = int.Parse(Console.ReadLine());
@@ -40,21 +41,24 @@ namespace cadProd
                         }
                         break;
                     case 2:
-                        foreach (var p in prod)
+                        Console.WriteLine("--- Estoque --- ");
+                        foreach (var prodd in prod)
                         {
-                            Console.WriteLine(p);
+                            Console.WriteLine(prodd);
                         }
+                        Console.WriteLine();
                         break;
                     case 3:
                         Console.Write("Digite o código de Id do produto: ");
                         int searchId = int.Parse(Console.ReadLine());
-                        Product f = Product.SearchProductById(searchId);
-                        if (f != null)
+                        Product findProduct = Product.SearchProductById(searchId);
+                        if (findProduct != null)
                         {
-                            Console.Write(f);
+                            Console.Write(findProduct);
                         }
                         else
                         {
+                            Console.WriteLine();
                             Console.WriteLine("Produto não encontrado");
                         }
                         break;
@@ -67,6 +71,7 @@ namespace cadProd
                         }
                         else
                         {
+                            Console.WriteLine();
                             Console.WriteLine("Produto não encontrado");
                         }
                         break;
