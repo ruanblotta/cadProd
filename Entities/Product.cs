@@ -24,7 +24,6 @@ namespace cadProd.Entities
         {
             products.Add(product);
         }
-
       
         public static List<Product> ListProduct()
         {
