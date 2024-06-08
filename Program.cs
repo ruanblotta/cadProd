@@ -7,6 +7,7 @@ namespace cadProd
     {
         public static void Main(string[] args)
         {
+
             List<Product> prod = new List<Product>();
 
             bool exit = false;
@@ -37,7 +38,9 @@ namespace cadProd
                             Console.Write("Digite a Quantidade que iremos adicionar: ");
                             int quantity = int.Parse(Console.ReadLine());
                             Console.WriteLine("---------------------");
-                            prod.Add(new Product(id, name, price, quantity));
+                            Product product = new Product(id, name, price, quantity);
+                            prod.Add(product);
+                            product.AddProduct(product);
                         }
                         break;
                     case 2:
