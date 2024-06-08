@@ -33,7 +33,14 @@ namespace cadProd.Entities
 
         public static Product SearchProductById(int id)
         {
-            return products.FirstOrDefault(p => p.Id == id);
+            foreach (var product in products)
+            {
+                if (product.Id == id)
+                {
+                    return product;
+                }
+            }
+            return null;
         }
 
         public static bool RemoveProduct(int id)
